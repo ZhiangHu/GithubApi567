@@ -1,21 +1,15 @@
 import requests
 
-def get_repositories(username):
-    list1 = list()
-    f='https://api.github.com/users/'+{username}+'/repos'
-    r = requests.get(f)
-    json = r.json()
-    for  p  in  range ( 0 , len ( json )):
-        rname = json[p]['name']
-        n='https://api.github.com/repos/'+{username}+'/'+{rname}+'/commits'
-        commit = requests.get(n)
-        c = commit.json()
-        list1.append(f"Repo: {rname} Commits number: {len(c)}")
-    return list1
+def get_repositories(url):
+    result = []
+    r = requests.get(url=url)
+    if 'next' in r.links :
+        result += get_repositories(r.links['next']['url'])
 
-def main():
-    username = input("Please enter the username:")
-    print(get_repositories(username))
+    for repository in r.json():
+        result.append(repository.get('name'))
 
-if __name__=='__main__':
-    main()
+    return result
+
+url = "https://api.github.com/users/stackforge/repos"
+print get_repositories(url)
