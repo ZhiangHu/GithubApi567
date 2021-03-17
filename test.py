@@ -1,8 +1,8 @@
 import unittest
-#from hw04_zhianghu import get_information
+#from hwjh import get_information
 
-class Testget_repositories(unittest.TestCase):
-    def testget_repositories(self):
+class Testget_information(unittest.TestCase):
+    def testget_information(self):
         list1 = ['Repo: csp Commits number: 2', 
                  'Repo: hellogitworld Commits number: 30',
                  'Repo: helloworld Commits number: 6',
@@ -15,5 +15,5 @@ class Testget_repositories(unittest.TestCase):
         self.assertEqual('Repo: csp Commits number: 2', list1[0])
 
 if __name__ == '__main__':
-    print('tests begin')
+    print('unit tests begin')
     unittest.main(exit=False, verbosity=2)
