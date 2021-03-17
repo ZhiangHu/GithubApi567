@@ -1,5 +1,5 @@
 import unittest
-#from hwjh import get_information
+#from hw04_zhianghu import get_information
 
 class Testget_information(unittest.TestCase):
     def testget_information(self):
