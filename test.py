@@ -1,8 +1,9 @@
 import unittest
-#from hw04_zhianghu import get_repositories
-
+from unittest.mock import MagicMock,patch
+from hw04_zhianghu import *
 class Testget_repositories(unittest.TestCase):
-    def testget_repositories(self):
+    @patch("hw04_zhianghu.get_repositories")
+    def testget_repositories(self,Mocktest):
         list1 = ['Repo: csp Commits number: 2', 
                  'Repo: hellogitworld Commits number: 30',
                  'Repo: helloworld Commits number: 6',
